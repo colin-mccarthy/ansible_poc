@@ -1,0 +1,25 @@
+---
+- hosts: all
+  gather_facts: no
+  connection: local
+
+
+
+  tasks:
+
+
+     
+     
+     
+     - name: CREATE SCRIPT
+       nios_host_record:
+         name: "123blasdfasdf.alaskaair.com"
+         ipv4addrs: 
+           - ipv4addr: "10.80.102.222"
+         state: present
+         provider:
+           host: "{{ nios_host }}"
+           username: "{{ nios_username }}"
+           password: "{{ nios_password }}"
+           wapi_version: "2.1"
+

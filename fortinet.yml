@@ -1,0 +1,31 @@
+---
+- hosts: all
+  gather_facts: no
+  connection: local
+  environment:
+    PYTHONHTTPSVERIFY: 0
+
+
+
+  tasks:
+
+     - debug: var=Fortimgr_user
+     - debug: var=Fortimgr_pass
+
+     
+     
+     
+     - name: CREATE SCRIPT
+       fmgr_script:
+         host: "{{inventory_hostname}}"
+         username: "{{ Fortimgr_user }}"
+         password: "{{ Fortimgr_pass }}"
+         adom: "Stations"
+         script_name: "TestScript"
+         script_type: "cli"
+         script_target: "remote_device"
+         script_description: "Create by Ansible"
+         script_content: "get system status"
+         state: "present"
+
+

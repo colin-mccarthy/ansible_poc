@@ -1,0 +1,25 @@
+---
+- hosts: all
+  gather_facts: no
+  connection: local
+
+
+
+  tasks:
+
+     - debug: var=Fortimgr_user
+     - debug: var=Fortimgr_pass
+
+     
+     
+     
+     - name: CREATE SCRIPT
+       uri:
+         url: https://10.80.100.21/dvmdb/adom/Stations/script/execute/testscript
+         username: "{{ Fortimgr_user }}"
+         password: "{{ Fortimgr_pass }}"
+         method: POST
+         force_basic_auth: yes
+         validate_certs: no
+
+

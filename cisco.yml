@@ -1,0 +1,19 @@
+---
+- hosts: all
+  gather_facts: no
+  connection: local
+
+
+
+  tasks:
+
+     
+     
+     - name: GATHER FACTS
+       ios_facts:
+       register: facts
+
+
+
+     - debug: var=facts.stdout_lines
+

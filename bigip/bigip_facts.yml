@@ -1,0 +1,14 @@
+- hosts: all
+  gather_facts: no
+  connection: local
+
+- name: Collect all BIG-IP facts
+  bigip_device_facts:
+    gather_subset:
+      - all
+    provider:
+      server: "{{ inventory_hostname }}"
+      user: "{{ username }}"
+      password: "{{ password }}"
+  delegate_to: localhost
+
